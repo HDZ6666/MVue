@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原生实现mvvm</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{person.name}}--{{person.age}}--{{person.fav.a}}</h2>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <p v-text="msg"></p>
+        <div v-html="htmlstr"></div>
+        <div v-text="inputValue"></div>
+        <input type="text" v-model="person.fav.a">
+        <button v-on:click="btn">按钮1</button>
+    </div>
+
+    <script src="./MVue.js"></script>
+    <!-- <script src="./vue.js"></script> -->
+    <script>
+        const vue = new MVue({
+            el: '#app',
+            data: {
+                person: {
+                    name: '张三',
+                    age: 18,
+                    fav: {
+                        a: 1
+                    }
+                },
+                msg: '我是信息',
+                htmlstr: '<span>我是html字符串</span>',
+                inputValue: '我是输入框内容'
+            },
+            methods: {
+                btn() {
+                    this.msg = '666'
+                    console.log(this)
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
