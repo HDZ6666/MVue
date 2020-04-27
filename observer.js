@@ -1,22 +1,22 @@
 //观察者模式
 //目标者类
-class Subject{
-    constructor(){
+class Subject {
+    constructor() {
         this.observers = []//观察者列表
     }
     //添加观察者
-    add(observer){
+    add(observer) {
         this.observers.push(observer)
     }
     //删除观察者
-    remove(observer){
-        let idx = this.observers.findIndex(item=>item===observer);
-        this.observers.splice(idx,1)
+    remove(observer) {
+        let idx = this.observers.findIndex(item => item === observer);
+        this.observers.splice(idx, 1)
     }
     //通知
-    notify(){
+    notify() {
         //循环所有观察者，并执行更新函数
-        for(let observer of this.observers){
+        for (let observer of this.observers) {
             observer.update()
         }
     }
@@ -24,12 +24,14 @@ class Subject{
 
 
 //观察者类
-class Observer{
-    constructor(name){
+class Observer {
+    constructor(name) {
+        //观察者名字
         this.name = name
     }
 
-    update(){
+    update() {
+        //接受新消息后的操作
         console.log(`发布者通知我更新了,我是${this.name}`)
     }
 }
@@ -40,6 +42,7 @@ const subject = new Subject();
 const observer1 = new Observer('我是观察者1')
 const observer2 = new Observer('我是观察者2')
 
+//添加2个观察者
 subject.add(observer1);
 subject.add(observer2);
 
